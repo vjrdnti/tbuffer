@@ -1,0 +1,21 @@
+{% extends 'tbuffer_app/base.html' %}
+{% block content %}
+<div class="cards">
+  <div class="card">
+    <h2>Encrypt</h2>
+    <form action="{% url 'encrypt' %}" method="post" enctype="multipart/form-data">
+      {% csrf_token %}
+      {{ encrypt_form.as_p }}
+      <button type="submit">Encrypt & Download</button>
+    </form>
+  </div>
+  <div class="card">
+    <h2>Decrypt</h2>
+    <form action="{% url 'decrypt' %}" method="post" enctype="multipart/form-data">
+      {% csrf_token %}
+      {{ decrypt_form.as_p }}
+      <button type="submit">Decrypt & Download</button>
+    </form>
+  </div>
+</div>
+{% endblock %}

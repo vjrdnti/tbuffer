@@ -1,0 +1,15 @@
+{% extends 'tbuffer_app/base.html' %}
+{% block content %}
+  {% if enc_url %}
+    <h3>Encrypted Image:</h3>
+    <img src="{{ enc_url }}" /><br>
+    <a href="{{ enc_url }}" download>Download Encrypted</a><br>
+    <h4>Noise Image & Key:</h4>
+    <a href="{{ noise_url }}" download>Download Noise</a><br>
+    <a href="{{ key_url }}"   download>Download Key (.tkey)</a>
+  {% elif rec_url %}
+    <h3>Recovered Image:</h3>
+    <img src="{{ rec_url }}" /><br>
+    <a href="{{ rec_url }}" download>Download Recovered</a>
+  {% endif %}
+{% endblock %}

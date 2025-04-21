@@ -1,0 +1,84 @@
+
+:root{
+  --primary: #4A90E2;
+  --primary-hover: #357ABD;
+  --bg: #F5F7FA;
+  --card-bg: #FFFFFF;
+  --radius: 12px;
+  --shadow: 0 4px 16px rgba(0,0,0,0.1);
+}
+* { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Inter', sans-serif; }
+body {
+  background: var(--bg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 2rem;
+}
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+  width: 100%;
+  max-width: 1000px;
+}
+.card {
+  background: var(--card-bg);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 2rem;
+  flex: 1;
+  min-width: 280px;
+  max-width: 360px;
+}
+h2 {
+  text-align: center;
+  margin-bottom: 1rem;
+  color: #333333;
+}
+form {
+  display: flex;
+  flex-direction: column;
+}
+input[type="text"], input[type="file"] {
+  padding: 0.75rem;
+  margin-bottom: 1rem;
+  border: 1px solid #CCCCCC;
+  border-radius: var(--radius);
+  width: 100%;
+}
+button, .button {
+  padding: 0.75rem 1rem;
+  border: none;
+  border-radius: var(--radius);
+  background: var(--primary);
+  color: #FFFFFF;
+  font-weight: 500;
+  cursor: pointer;
+  text-align: center;
+  transition: background 0.3s;
+  margin: 0.5rem;
+}
+button:hover, .button:hover {
+  background: var(--primary-hover);
+}
+.result-img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 1rem auto;
+  border-radius: var(--radius);
+}
+.result-container {
+  background: var(--card-bg);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 1.5rem;
+  margin-top: 2rem;
+  text-align: center;
+  max-width: 600px;
+  width: 100%;
+}
