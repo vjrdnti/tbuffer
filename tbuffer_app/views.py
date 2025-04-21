@@ -5,6 +5,8 @@ from .forms import EncryptForm, DecryptForm
 from .utils import TripathiBuffer
 from PIL import Image
 import numpy as np
+from PIL import ImageOps
+
 
 def index(request):
     return render(request, 'tbuffer_app/index.html')
@@ -13,7 +15,9 @@ def encrypt_view(request):
     if request.method=='POST':
         form = EncryptForm(request.POST, request.FILES)
         if form.is_valid():
-            img = Image.open(form.cleaned_data['image'])
+            #img = Image.open(form.cleaned_data['image'])
+            raw = Image.open(form.cleaned_data['image'])
+            img = ImageOps.exif_transpose(raw).convert('RGB')
             key = form.cleaned_data['secret_key']
             noisy, noise, composite = TripathiBuffer.encrypt(img, key)
 
@@ -37,7 +41,8 @@ def decrypt_view(request):
     if request.method=='POST':
         form = DecryptForm(request.POST, request.FILES)
         if form.is_valid():
-            enc_img = Image.open(form.cleaned_data['image'])
+            raw = Image.open(form.cleaned_data['image'])
+            enc_img = ImageOps.exif_transpose(raw).convert('RGB')
             raw = request.FILES['key_file'].read().decode()
             skey = form.cleaned_data['secret_key']
             arr = np.array(enc_img)
